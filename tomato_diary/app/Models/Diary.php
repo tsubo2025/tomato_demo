@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Diary extends Model
 {
     use HasFactory;
-    protected $fillable = ['date', 'weather', 'description', 'tomato_count'];
+    protected $table = 'tomato_diary';
+    protected $fillable = ['date', 'weather', 'note', 'tomato_count'];
     //1つの日記に対して複数の写真を持つ
     public function photos()
     {
-        return $this->hasMany(DiaryPhoto::class);//DiaryPhotoモデルと関連付け連携
+        return $this->hasMany(DiaryPhoto::class, 'diary_id'); //DiaryPhotoモデルと関連付け連携
     }
 }

@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('tomato_diary', function (Blueprint $table) {
             $table->id();
-            $table->date('date');//カレンダーで選択した日付
-            $table->string('weather');//天気
-            $table->text('description');//日記の内容
-            $table->integer('tomato_count');//トマトの個数
+            $table->date('date'); //カレンダーで選択した日付
+            $table->string('weather'); //天気
+            $table->text('note'); //日記の内容
+            $table->integer('tomato_count'); //トマトの個数
             $table->timestamps();
         });
     }

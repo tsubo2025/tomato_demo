@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tomato_photo', function (Blueprint $table) {
+        Schema::create('tomato_photos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tomato_diary_id')->constrained('tomato_diary');//tomato_diaryテーブルのidを参照,関連付け
-
-            $table->onDelete('cascade');//日記が削除されたら写真も削除される
+            $table->foreignId('diary_id')->constrained('tomato_diary')->onDelete('cascade'); //tomato_diaryテーブルのidを参照,関連付け
             $table->string('photo_path');
             $table->timestamps();
         });
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tomato_photo');
+        Schema::dropIfExists('tomato_photos');
     }
 };

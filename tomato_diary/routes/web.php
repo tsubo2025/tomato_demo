@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DiaryController;
 
 /*
@@ -27,6 +28,3 @@ Route::get('/diary/{diary}', [DiaryController::class, 'show'])->name('diary.show
 Route::get('/diary/{diary}/edit', [DiaryController::class, 'edit'])->name('diary.edit');
 Route::put('/diary/{diary}', [DiaryController::class, 'update'])->name('diary.update');
 Route::delete('/diary/{diary}', [DiaryController::class, 'destroy'])->name('diary.destroy');
-
-
-
