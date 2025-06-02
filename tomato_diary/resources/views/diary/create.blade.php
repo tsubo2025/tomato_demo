@@ -35,7 +35,7 @@
                                     name="weather" 
                                     required>
                                 <option value="" {{ old('weather') == '' ? 'selected' : '' }}>選択してください</option>
-                                @foreach(['晴れ', '曇り', '雨'] as $weather)
+                                @foreach(['晴れ', '曇り', '雨', '雪'] as $weather)
                                     <option value="{{ $weather }}" {{ old('weather') == $weather ? 'selected' : '' }}>
                                         {{ $weather }}
                                     </option>
