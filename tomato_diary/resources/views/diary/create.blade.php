@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="mb-0">新規日記作成</h4>
+                    <h4 class="mb-0">新規作成</h4>
                 </div>
 
                 <div class="card-body">
