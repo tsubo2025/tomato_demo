@@ -4,36 +4,45 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">トマト日記一覧</div>
+            <div class="card shadow-sm">
+                <div class="card-header bg-white py-2">
+                    <h4 class="mb-0">トマト日記一覧</h4>
+                </div>
 
-                <div class="card-body">
+                <div class="card-body p-1">
                     @if (session('success'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success py-2" role="alert">
                             {{ session('success') }}
                         </div>
                     @endif
 
-                    
-
                     @foreach($diaries as $diary)
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ optional($diary->date)->format('Y年m月d日') }} - {{ $diary->weather }}</h5>
-                                <p class="card-text">{{ $diary->note }}</p>
-                                <p class="card-text">トマトの数: {{ $diary->tomato_count }}</p>
-                                
-                                @if($diary->photos->count() > 0)
-                                    <div class="row">
-                                        @foreach($diary->photos as $photo)
-                                            <div class="col-md-4 mb-2">
-                                                <img src="{{ Storage::url($photo->photo_path) }}" class="img-fluid" alt="トマトの写真">
-                                            </div>
-                                        @endforeach
+                        <div class="card mb-1 shadow-sm">
+                            <div class="card-body p-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div class="flex-grow-1 pe-1">
+                                        <h5 class="card-title mb-1" style="font-size: 1.5rem;">{{ $diary->date ? \Carbon\Carbon::parse($diary->date)->format('Y年m月d日') : '日付なし' }} - {{ $diary->weather }}</h5>
+                                        <p class="card-text mb-1" style="font-size: 1.2rem;">{{ $diary->note }}</p>
+                                        <p class="card-text mb-0" style="font-size: 1.2rem;">トマトの数: {{ $diary->tomato_count }}</p>
                                     </div>
-                                @endif
+                                    
+                                    @if($diary->photos->count() > 0)
+                                        <div class="ms-1">
+                                            @foreach($diary->photos as $photo)
+                                                <img src="{{ Storage::url($photo->photo_path) }}" 
+                                                     class="img-thumbnail mb-1" 
+                                                     style="max-width: 120px; height: auto; padding: 0.1rem;"
+                                                     alt="トマトの写真">
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                </div>
 
-                                <a href="{{ route('diary.edit', $diary->id) }}" class="btn btn-sm btn-primary">編集</a>
+                                <div class="mt-1">
+                                    <a href="{{ route('diary.edit', $diary->id) }}" class="btn btn-primary btn-sm py-0 px-1" style="font-size: 1rem;">
+                                        <i class="fas fa-edit"></i> 編集
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     @endforeach
