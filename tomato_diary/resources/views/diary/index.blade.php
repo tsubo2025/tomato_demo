@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <a href="{{ route('diary.create') }}" class="btn btn-primary mb-3">新規作成</a>
+                    
 
                     @foreach($diaries as $diary)
                         <div class="card mb-3">
