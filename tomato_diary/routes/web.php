@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DiaryController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ use App\Http\Controllers\DiaryController;
 // });
 
 Auth::routes();
+Route::get('/w', [WelcomeController::class, 'welcome'])->name('welcome');
 
 Route::get('/', [DiaryController::class, 'index'])->name('diary.index');
 Route::get('/diary/create', [DiaryController::class, 'create'])->name('diary.create');
