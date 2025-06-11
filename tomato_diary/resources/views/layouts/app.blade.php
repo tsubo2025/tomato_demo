@@ -20,8 +20,12 @@
         <x-header />
 
         <main class="py-4 flex-grow-1">
-            <div class="container-xl">
-                @yield('content')
+            <div class="container-fluid px-4">
+                <div class="row justify-content-center">
+                    <div class="col-xxl-10">
+                        @yield('content')
+                    </div>
+                </div>
             </div>
         </main>
 
