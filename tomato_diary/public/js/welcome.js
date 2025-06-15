@@ -24,29 +24,29 @@ document.addEventListener('DOMContentLoaded', function() {
         tomato.style.left = Math.random() * (window.innerWidth - 70) + 'px';
         animationContainer.appendChild(tomato);
 
-        // 落下アニメーション
-        let position = -70;
-        const speed = 2 + Math.random() * 3;
-        const rotation = Math.random() * 360;
+        // アニメーション終了時に要素を削除
+        tomato.addEventListener('animationend', () => {
+            tomato.remove();
+        });
 
-        function animate() {
-            position += speed;
-            tomato.style.transform = `translateY(${position}px) rotate(${rotation}deg)`;
+        // トマトが画面の中央を過ぎたときに音を鳴らす
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    tomatoSound.currentTime = 0;
+                    tomatoSound.play();
+                    observer.disconnect();
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
 
-            if (position < window.innerHeight + 70) {
-                requestAnimationFrame(animate);
-            } else {
-                tomato.remove();
-            }
-        }
-
-        animate();
-        tomatoSound.currentTime = 0;
-        tomatoSound.play();
+        observer.observe(tomato);
     }
 
     // 定期的にトマトを生成
-    let tomatoInterval = setInterval(createTomato, 2000);
+    let tomatoInterval = setInterval(createTomato, 600);
 
     // ボタンのイベントリスナー
     nextPageButton.addEventListener('click', function() {

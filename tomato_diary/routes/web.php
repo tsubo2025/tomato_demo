@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,11 @@ Route::get('/diary/{diary}', [DiaryController::class, 'show'])->name('diary.show
 Route::get('/diary/{diary}/edit', [DiaryController::class, 'edit'])->name('diary.edit');
 Route::put('/diary/{diary}', [DiaryController::class, 'update'])->name('diary.update');
 Route::delete('/diary/{diary}', [DiaryController::class, 'destroy'])->name('diary.destroy');
+
+// 管理者用ルート
+Route::prefix('admin')->group(function () {
+    Route::get('login', [AdminController::class, 'showLoginForm'])->name('admin.login');
+    Route::post('login', [AdminController::class, 'login']);
+    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::post('logout', [AdminController::class, 'logout'])->name('admin.logout');
+});

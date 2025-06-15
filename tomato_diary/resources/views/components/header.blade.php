@@ -24,10 +24,14 @@
                         <i class="fas fa-plus"></i> 新規作成
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('diary.edit') ? 'active' : '' }}" href="{{ route('diary.edit', ['id' => 1]) }}">
+                        <i class="fas fa-edit"></i> 仕様・諸元
+                    </a>
             </ul>
             {{-- 管理者ログインボタンをここに追加 --}}
             <div class="d-flex">
-               <a href="{{ route('diary.create') }}" class="btn btn-outline-success ms-md-3">管理者ログイン</a>
+               <a href="{{ route('admin') }}" class="btn btn-outline-success ms-md-3">管理者ログイン</a>
             </div>
         </div>
     </div>
