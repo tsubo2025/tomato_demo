@@ -7,7 +7,7 @@
         <h2>PDF仕様書</h2>
         <ul>
             <li>
-                <a href="{{ route('specifications.view-pdf', ['filename' => 'feature-a-spec']) }}" target="_blank">
+                <a href="{{ route('specifications.showPdf', ['filename' => 'feature-spec']) }}" target="_blank">
                     機能Aの仕様書 (PDF)
                 </a>
             </li>

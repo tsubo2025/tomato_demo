@@ -15,7 +15,7 @@
         rel="stylesheet">
 </head>
 
-<body data-sound-path="{{ asset('sound/kyu_.mp3') }}" 
+<body data-sound-path="{{ asset('sound/uguisu.mp3') }}" 
       data-bounce-sound-path="{{ asset('sound/bounce.mp3') }}"
       data-tomato-image-path="{{ asset('image/tomato/tomato_red.png') }}"
       data-canned-tomato-image-path="{{ asset('image/tomato/kandume_tomato.png') }}">
@@ -26,7 +26,7 @@
 
     <div id="main-content">
         <h2>ようこそ、トマト観察日記へ！</h2>
-        <p>ここでは、日々落ちてくるトマトたちを観察しています。たまに、缶詰になったトマトも落ちてきますね。彼らがどのように育ち、そしてどうなるのか、静かに見守りましょう。</p>
+        <p>ここでは、日々のトマトたちを観察しています。たまに、缶詰になったトマトも落ちてきますね。彼らがどのように育ち、そしてどうなるのか、静かに見守りましょう。</p>
         <p>このページは、背景のトマトアニメーションを透かして表示しています。</p>
 
         <button id="next-page-button" class="action-button">トマトを見に行く</button>

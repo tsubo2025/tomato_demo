@@ -39,3 +39,8 @@ Route::prefix('admin')->group(function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::post('logout', [AdminController::class, 'logout'])->name('admin.logout');
 });
+
+//仕様書ルート
+Route::get('/specifications', [App\Http\Controllers\SpecificationController::class, 'index'])->name('specifications.index');
+Route::get('/specifications/{filename}', [App\Http\Controllers\SpecificationController::class, 'showPdf'])->name('specifications.showPdf');
+

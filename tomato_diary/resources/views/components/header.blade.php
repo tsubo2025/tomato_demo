@@ -25,13 +25,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('diary.edit') ? 'active' : '' }}" href="{{ route('diary.edit', ['id' => 1]) }}">
-                        <i class="fas fa-edit"></i> 仕様・諸元
+                    <a class="nav-link {{ request()->routeIs('specifications.index') ? 'active' : '' }}" href="{{ route('specifications.index') }}">
+                        <i class="fas fa-circle-info"></i> 仕様・諸元
                     </a>
+                </li>
             </ul>
             {{-- 管理者ログインボタンをここに追加 --}}
             <div class="d-flex">
-               <a href="{{ route('admin') }}" class="btn btn-outline-success ms-md-3">管理者ログイン</a>
+               <a href="{{ route('admin.login') }}" class="btn btn-outline-success ms-md-3">管理者ログイン</a>
             </div>
         </div>
     </div>
