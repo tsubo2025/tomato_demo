@@ -25,7 +25,7 @@
                         <h3>ユーザー管理</h3>
                         <p>ユーザー情報の確認・編集</p>
                     </a>
-                    <a href="#" class="menu-item">
+                    <a href="{{ route('diary.index') }}" class="menu-item">
                         <h3>日記管理</h3>
                         <p>日記の確認・編集・削除</p>
                     </a>

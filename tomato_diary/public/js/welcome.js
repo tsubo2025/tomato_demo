@@ -16,6 +16,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const tomatoSound = new Audio(soundPath);
     const bounceSound = new Audio(bounceSoundPath);
 
+    // 音声の読み込みを確認
+    tomatoSound.addEventListener('canplaythrough', () => {
+        console.log('ウグイスの音声が読み込まれました');
+    });
+
+    tomatoSound.addEventListener('error', (e) => {
+        console.error('音声の読み込みエラー:', e);
+    });
+
     // トマトを生成する関数
     function createTomato() {
         const tomato = document.createElement('img');
@@ -33,8 +42,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) {
-                    tomatoSound.currentTime = 0;
-                    tomatoSound.play();
+                    try {
+                        tomatoSound.currentTime = 0;
+                        const playPromise = tomatoSound.play();
+                        
+                        if (playPromise !== undefined) {
+                            playPromise.catch(error => {
+                                console.error('音声再生エラー:', error);
+                            });
+                        }
+                    } catch (error) {
+                        console.error('音声再生エラー:', error);
+                    }
                     observer.disconnect();
                 }
             });

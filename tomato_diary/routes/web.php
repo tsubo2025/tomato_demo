@@ -23,6 +23,8 @@ use App\Http\Controllers\AdminController;
 
 Auth::routes();
 Route::get('/w', [WelcomeController::class, 'welcome'])->name('welcome');
+// 閲覧者用ルート
+Route::get('/public', [DiaryController::class, 'publicIndex'])->name('diary.public.index');
 
 Route::get('/', [DiaryController::class, 'index'])->name('diary.index');
 Route::get('/diary/create', [DiaryController::class, 'create'])->name('diary.create');
@@ -31,6 +33,9 @@ Route::get('/diary/{diary}', [DiaryController::class, 'show'])->name('diary.show
 Route::get('/diary/{diary}/edit', [DiaryController::class, 'edit'])->name('diary.edit');
 Route::put('/diary/{diary}', [DiaryController::class, 'update'])->name('diary.update');
 Route::delete('/diary/{diary}', [DiaryController::class, 'destroy'])->name('diary.destroy');
+
+// ダッシュボードのルート
+
 
 // 管理者用ルート
 Route::prefix('admin')->group(function () {
@@ -43,4 +48,3 @@ Route::prefix('admin')->group(function () {
 //仕様書ルート
 Route::get('/specifications', [App\Http\Controllers\SpecificationController::class, 'index'])->name('specifications.index');
 Route::get('/specifications/{filename}', [App\Http\Controllers\SpecificationController::class, 'showPdf'])->name('specifications.showPdf');
-

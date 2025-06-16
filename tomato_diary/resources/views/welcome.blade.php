@@ -40,7 +40,7 @@
     <div id="next-screen" class="next-screen">
         <h2>トマトの国へようこそ！</h2>
         <p>きっとたくさんのトマトが実っています。</p>
-        <a href="#">詳細を見る</a>
+        <a href="{{ route('diary.index') }}">詳細を見る</a>
     </div>
 
     <!-- JavaScriptファイル -->

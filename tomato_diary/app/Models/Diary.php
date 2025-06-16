@@ -10,6 +10,11 @@ class Diary extends Model
     use HasFactory;
     protected $table = 'tomato_diary';
     protected $fillable = ['date', 'weather', 'note', 'tomato_count'];
+
+    protected $casts = [
+        'date' => 'datetime',
+    ];
+
     //1つの日記に対して複数の写真を持つ
     public function photos()
     {

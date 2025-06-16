@@ -23,6 +23,21 @@ class DiaryController extends Controller
         }
     }
 
+    // 公開用一覧表示
+    public function publicIndex()
+    {
+        try {
+            $diaries = Diary::with('photos')
+                ->orderBy('date', 'desc')
+                ->get();
+            Log::info('Public diaries loaded successfully', ['count' => $diaries->count()]);
+            return view('diary.public.index', compact('diaries'));
+        } catch (\Exception $e) {
+            Log::error('Error in publicIndex method', ['error' => $e->getMessage()]);
+            return view('diary.public.index', ['diaries' => collect()]);
+        }
+    }
+
     // 入力フォーム表示
     public function create()
     {
