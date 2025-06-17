@@ -30,8 +30,22 @@
                                 {{ $diary->note }}
                             @endif
                         </p>
+                        @if($diary->photos->count() > 0)
+                            <div class="row">
+                                @foreach($diary->photos as $photo)
+                                    <div class="col-4 mb-2">
+                                        <img src="{{ Storage::url($photo->photo_path) }}" 
+                                             class="img-thumbnail photo-thumbnail" 
+                                             alt="日記の写真"
+                                             data-bs-toggle="modal"
+                                             data-bs-target="#photoModal{{ $photo->id }}">
+                                    </div>
+                                @endforeach
+                            </div>
+                        
+                    @endif
                     </div>
-                    @if($diary->photos->count() > 0)
+                    {{-- @if($diary->photos->count() > 0)
                         <div class="card-footer">
                             <div class="row">
                                 @foreach($diary->photos as $photo)
@@ -45,7 +59,7 @@
                                 @endforeach
                             </div>
                         </div>
-                    @endif
+                    @endif --}}
                 </div>
             </div>
         @empty
