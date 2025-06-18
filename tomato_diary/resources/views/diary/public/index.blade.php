@@ -22,28 +22,33 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">{{ $diary->date->format('Y年m月d日') }}</h5>
-                        <p class="card-text">
-                            <strong>天気:</strong> {{ $diary->weather }}<br>
-                            <strong>トマトの数:</strong> {{ $diary->tomato_count }}個<br>
-                            @if($diary->note)
-                                <strong>メモ:</strong><br>
-                                {{ $diary->note }}
-                            @endif
-                        </p>
-                        @if($diary->photos->count() > 0)
-                            <div class="row">
-                                @foreach($diary->photos as $photo)
-                                    <div class="col-4 mb-2">
-                                        <img src="{{ Storage::url($photo->photo_path) }}" 
-                                             class="img-thumbnail photo-thumbnail" 
-                                             alt="日記の写真"
-                                             data-bs-toggle="modal"
-                                             data-bs-target="#photoModal{{ $photo->id }}">
-                                    </div>
-                                @endforeach
+                        <div class="d-flex flex-row">
+                            <div class="flex-grow-1 pe-3">
+                                <p class="card-text">
+                                    <strong>天気:</strong> {{ $diary->weather }}<br>
+                                    <strong>トマトの数:</strong> {{ $diary->tomato_count }}個<br>
+                                    @if($diary->note)
+                                        <strong>メモ:</strong><br>
+                                        {{ $diary->note }}
+                                    @endif
+                                </p>
                             </div>
-                        
-                    @endif
+                            @if($diary->photos->count() > 0)
+                                <div class="flex-shrink-0" style="width: 50%;">
+                                    <div class="row g-2">
+                                        @foreach($diary->photos as $photo)
+                                            <div class="col-6">
+                                                <img src="{{ Storage::url($photo->photo_path) }}" 
+                                                     class="img-thumbnail photo-thumbnail w-100" 
+                                                     alt="日記の写真"
+                                                     data-bs-toggle="modal"
+                                                     data-bs-target="#photoModal{{ $photo->id }}">
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
                     </div>
                     {{-- @if($diary->photos->count() > 0)
                         <div class="card-footer">
