@@ -79,19 +79,20 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             bounceSound.currentTime = 0;
             bounceSound.play();
-        }, 400); // アニメーションの20%の位置で音を再生
+        }, 400);// 400ミリ秒後にバウンド音を再生
+        // 次の画面をフェードインさせる
 
         // 2秒後に次の画面を表示して遷移
         setTimeout(() => {
             nextScreen.classList.add('fade-in');
             setTimeout(() => {
-                window.location.href = '/';
+                window.location.href = '/public';
             }, 1000);
         }, 2000);
     });
 
     adminPageButton.addEventListener('click', function() {
-        window.location.href = '/login';
+        window.location.href = '/admin/login';
     });
 
     // タイトルのアニメーション

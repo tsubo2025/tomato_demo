@@ -22,11 +22,11 @@ use App\Http\Controllers\AdminController;
 // });
 
 Auth::routes();
-Route::get('/w', [WelcomeController::class, 'welcome'])->name('welcome');
+Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
 // 閲覧者用ルート
 Route::get('/public', [DiaryController::class, 'publicIndex'])->name('diary.public.index');
 
-Route::get('/', [DiaryController::class, 'index'])->name('diary.index');
+Route::get('/top', [DiaryController::class, 'index'])->name('diary.index');
 Route::get('/diary/create', [DiaryController::class, 'create'])->name('diary.create');
 Route::post('/diary', [DiaryController::class, 'store'])->name('diary.store');
 Route::get('/diary/{diary}', [DiaryController::class, 'show'])->name('diary.show');

@@ -6,7 +6,7 @@
     {{-- resources/views/components/header.blade.php --}}
 <nav class="navbar navbar-expand-md navbar-light shadow-sm fixed-top custom-header-bg">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('diary.index') }}">
+        <a class="navbar-brand" href="{{ route('diary.public.index') }}">
             <i class="fas fa-seedling text-success"></i> {{ config('app.name', '本日のトマトさん') }}
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,14 +16,14 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('diary.index') ? 'active' : '' }}" href="{{ route('diary.index') }}">
-                        <i class="fas fa-list"></i> 一覧
+                        <i class="fas fa-list"></i> 一覧カレンダー
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('diary.create') ? 'active' : '' }}" href="{{ route('diary.create') }}">
                         <i class="fas fa-plus"></i> 新規作成
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('specifications.index') ? 'active' : '' }}" href="{{ route('specifications.index') }}">
                         <i class="fas fa-circle-info"></i> 仕様・諸元

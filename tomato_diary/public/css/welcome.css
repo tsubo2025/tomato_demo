@@ -151,13 +151,14 @@ body {
     position: fixed;
     top: 15px;
     right: 20px;
-    padding: 18px 30px;
+    padding: 10px 10px;
     background-color: #90db53;
-    color: white;
-    text-decoration: none;
-    border-radius: 2px;
+    color: #210dbb;
+    border-radius: 4px;
+    
     font-weight: bold;
-    border: 2px solid #046732;
+    font-size: 1.4em;
+    border: 4px solid #046732;
     z-index: 9999;
     transition: background-color 0.3s, transform 0.3s;
     cursor: pointer;
