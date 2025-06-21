@@ -16,14 +16,15 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('diary.index') ? 'active' : '' }}" href="{{ route('diary.index') }}">
+                        <i class="fas fa-plus"></i> 一覧
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('diary.index') ? 'active' : '' }}" href="{{ route('diary.index') }}">
                         <i class="fas fa-list"></i> 一覧カレンダー
                     </a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('diary.create') ? 'active' : '' }}" href="{{ route('diary.create') }}">
-                        <i class="fas fa-plus"></i> 新規作成
-                    </a>
-                </li> --}}
+                
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('specifications.index') ? 'active' : '' }}" href="{{ route('specifications.index') }}">
                         <i class="fas fa-circle-info"></i> 仕様・諸元

@@ -12,6 +12,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="{{ asset('css/navi.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    @vite('resources/css/app.css') {{-- <-- mouse_stalker --}}
 </head>
 <body>
     <div class="d-flex flex-column min-vh-100">
@@ -32,5 +33,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     @stack('scripts')
+    @vite('resources/js/app.js') {{-- <-- mouse_stalker --}}
 </body>
 </html>

@@ -1,3 +1,3 @@
 import './bootstrap';
 
-import './mouse_stalker'; //mouse stalker
+import './mouse_stalker.js'; //mouse stalker
