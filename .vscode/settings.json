@@ -1,0 +1,14 @@
+{
+    "liveServer.settings.port": 5501
+}
+{
+  "terminal.integrated.cwd": "C:\Users\tsubo\Desktop\ポリテク\project\tomato\tomato_diary"
+}
+{
+    "workbench.colorCustomizations": {
+        "editor.selectionBackground": "#ADD8E680", // 例: 半透明の薄い青
+        "editor.selectionHighlightBackground": "#FFFF0030" // 例: 半透明の黄色
+        // 必要であれば、他の関連設定も追加
+        // "editor.selectionBorder": "#FF0000" // 選択範囲の枠線（あまり使われない）
+    }
+}

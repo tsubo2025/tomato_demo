@@ -1,0 +1,285 @@
+/* 全体のスタイル設定 */
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #ffecb3, #ffe0f0);
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    color: #555;
+    position: relative;
+    height: 100vh;
+}
+
+/* タイトルのスタイル */
+.title {
+    text-align: center;
+    color: #FF5722;
+    margin-top: 30px;
+    font-size: 3.5em;
+    font-family: 'Mochiy Pop P One', cursive;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), 
+                 -2px -2px 0px rgba(255, 255, 255, 0.6);
+    position: relative;
+    z-index: 10;
+    animation: pulse-title 3s infinite alternate;
+}
+
+/* タイトルのパルスアニメーション */
+@keyframes pulse-title {
+    0% {
+        transform: scale(1);
+        color: #FF5722;
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -2px -2px 0px rgba(255, 255, 255, 0.6);
+    }
+    50% {
+        transform: scale(1.05);
+        color: #FF9800;
+        text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3), -3px -3px 0px rgba(255, 255, 255, 0.8);
+    }
+    100% {
+        transform: scale(1);
+        color: #FF5722;
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -2px -2px 0px rgba(255, 255, 255, 0.6);
+    }
+}
+
+/* アニメーションコンテナの設定 */
+#animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* 落下するトマトのスタイル */
+.falling-tomato {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    z-index: 2;
+    animation: fall 4s linear forwards;
+}
+
+/* トマトの落下アニメーション */
+@keyframes fall {
+    0% {
+        transform: translateY(-70px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(calc(100vh + 70px)) rotate(360deg);
+    }
+}
+
+/* メインコンテンツのスタイル */
+#main-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 900px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 
+                0 0 0 5px rgba(255, 255, 255, 0.5) inset;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* メインコンテンツの見出し */
+#main-content h2 {
+    font-size: 2.5em;
+    color: #FF5722;
+    margin-bottom: 15px;
+    font-family: 'Mochiy Pop P One', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* メインコンテンツの段落 */
+#main-content p {
+    font-size: 1.3em;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+/* アクションボタンのスタイル */
+.action-button {
+    background: linear-gradient(to right, #FFD700, #FF6347);
+    color: white;
+    padding: 18px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.5em;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 
+                0 0 0 3px rgba(255, 255, 255, 0.5) inset;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+}
+
+/* アクションボタンのホバー効果 */
+.action-button:hover {
+    background: linear-gradient(to right, #FFEB3B, #FF7043);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 
+                0 0 0 4px rgba(255, 255, 255, 0.6) inset;
+}
+
+/* アクションボタンのアクティブ状態 */
+.action-button:active {
+    background: linear-gradient(to right, #FFC107, #E64A2F);
+    transform: translateY(0);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 管理者ボタンのスタイル */
+.admin-button {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    padding: 10px 10px;
+    background-color: #90db53;
+    color: #210dbb;
+    border-radius: 4px;
+    
+    font-weight: bold;
+    font-size: 1.4em;
+    border: 4px solid #046732;
+    z-index: 9999;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+
+/* 管理者ボタンのホバー効果 */
+.admin-button:hover {
+    background-color: #3c5706;
+    transform: scale(1.1);
+}
+
+/* 大きなトマトのスタイル */
+.big-tomato {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-image: url('../image/tomato/tomato_red.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    opacity: 0;
+    top: -300px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.1);
+    z-index: 15;
+    transition: top 1s ease-in-out, opacity 0.3s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* 大きなトマトの落下状態 */
+.big-tomato.falling {
+    top: 50%;
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    animation: bounce 2s ease-in-out;
+}
+
+/* 大きなトマトのバウンスアニメーション */
+@keyframes bounce {
+    0% {
+        top: -300px;
+        transform: translateX(-50%) scale(0.1);
+    }
+    20% {
+        top: 50%;
+        transform: translateX(-50%) scale(1);
+    }
+    40% {
+        top: 30%;
+        transform: translateX(-50%) scale(0.9);
+    }
+    60% {
+        top: 50%;
+        transform: translateX(-50%) scale(1);
+    }
+    80% {
+        top: 40%;
+        transform: translateX(-50%) scale(0.95);
+    }
+    100% {
+        top: 50%;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+/* 大きなトマトの非表示状態 */
+.big-tomato.hidden {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.1);
+}
+
+/* 次の画面のスタイル */
+.next-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    z-index: 20;
+    pointer-events: none;
+    transition: opacity 1s ease-in-out;
+}
+
+/* 次の画面のフェードイン状態 */
+.next-screen.fade-in {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 次の画面の見出し */
+.next-screen h2 {
+    font-size: 2.5em;
+    color: #FF5722;
+    margin-bottom: 20px;
+    font-family: 'Mochiy Pop P One', cursive;
+}
+
+/* 次の画面の段落 */
+.next-screen p {
+    font-size: 1.3em;
+    color: #666;
+    margin-bottom: 30px;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+/* 次の画面のリンク */
+.next-screen a {
+    color: #FF5722;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+/* 次の画面のリンクホバー効果 */
+.next-screen a:hover {
+    color: #FF9800;
+}

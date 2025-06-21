@@ -1,0 +1,210 @@
+/* public/css/custom.css */
+
+/* ヘッダーの色を変更 */
+.navbar.custom-header-bg {
+    background-color: #f8c9ba !important; /* トマトのような赤 */
+}
+
+/* フッターの色を変更 */
+.custom-footer-bg {
+    background-color: #333333; /* 濃い灰色 */
+    color: #f8f9fa; /* 白に近い色 */
+}
+
+/* 全体のスタイル */
+body {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* カードのスタイル */
+.card {
+    border: none !important;
+    border-radius: 10px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    transition: transform 0.2s ease !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.card-body {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 2rem !important;
+    flex: 1 1 auto !important;
+}
+
+/* 画像のスタイル */
+.card img,
+.card-body img,
+.img-thumbnail,
+img[class*="thumbnail"],
+img[src*="tomato"] {
+    max-width: 300px !important;
+    max-height: 300px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: cover !important;
+    border-radius: 20px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    float: right !important;
+    margin-left: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+.card:hover {
+    transform: translateY(-2px) !important;
+}
+
+.card-header {
+    background-color: #fff !important;
+    border-bottom: 1px solid #eee !important;
+    border-radius: 10px 10px 0 0 !important;
+    padding: 1.5rem 2rem !important;
+    width: 100% !important;
+}
+
+/* カードの親要素のスタイル */
+.row > div[class*="col"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 15px !important;
+}
+
+/* ボタンのスタイル */
+.btn {
+    border-radius: 5px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+/* フォームのスタイル */
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 0.5rem 1rem;
+}
+
+.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #495057;
+}
+
+/* アラートのスタイル */
+.alert {
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 画像コンテナのスタイル */
+.image-container,
+div[class*="image"],
+div[class*="photo"] {
+    max-width: 300px !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    text-align: right !important;
+    float: right !important;
+    clear: both !important;
+}
+
+/* アニメーション */
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* メインページの背景画像設定 */
+main {
+    padding-top: 76px; /* ヘッダーの高さ分のパディング */
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 76px - 60px); /* ビューポートの高さ - ヘッダーの高さ - フッターの高さ */
+    width: 100%;
+}
+
+main::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../image/tomato/bg_tomato.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+/* ヘッダーを固定表示 */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* フッターを固定表示 */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    background-color: #333333;
+    color: #f8f9fa;
+    padding: 1rem 0;
+}
+
+/* メインコンテンツのスタイル */
+main .container-xl {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
