@@ -106,20 +106,24 @@ h2 {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* 中央寄せ */
+    transform: translate(-50%, -50%);
     text-align: center;
-    color: #333; /* 文字色 */
-    font-family: 'M PLUS Rounded 1c', sans-serif; /* フォントを合わせる */
-    pointer-events: none; /* グラフ操作の邪魔にならないように */
+    pointer-events: none;
 }
 
 .center-text .total-count {
-    font-size: 2.5em; /* 合計数のフォントサイズ */
-    font-weight: 700; /* 太字 */
-    color: #e74c3c; /* 目立つ色にする */
+    font-size: 3.5em;   /* お好みで調整（例: 2.5em～4em） */
+    font-weight: 700;
+    color: #e74c3c;
+    line-height: 1.1;
+    margin: 0;
+    padding: 0;
 }
 
 .center-text .total-label {
-    font-size: 0.9em; /* ラベルのフォントサイズ */
+    font-size: 1.3em;   /* お好みで調整（例: 0.9em～1.5em） */
     color: #666;
+    line-height: 1.1;
+    margin: 0;
+    padding: 0;
 }

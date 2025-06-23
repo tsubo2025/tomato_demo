@@ -16,9 +16,9 @@ class DashboardController extends Controller
         // --- 天気データ集計 ---
         // 'weather'カラムでグループ化し、それぞれの件数をカウント
         $weatherCounts = Diary::select('weather', DB::raw('count(*) as count'))
-                                    ->groupBy('weather')
-                                    ->pluck('count', 'weather') // ['晴れ' => 10, '曇り' => 5, ...] の形式にする
-                                    ->toArray();
+            ->groupBy('weather')
+            ->pluck('count', 'weather') // ['晴れ' => 10, '曇り' => 5, ...] の形式にする
+            ->toArray();
 
         $weatherLabels = array_keys($weatherCounts);
         $weatherValues = array_values($weatherCounts);
@@ -44,9 +44,11 @@ class DashboardController extends Controller
 
 
         return view('admin.dashboard', compact(
-            'weatherLabels', 'weatherValues',
-            'harvestLabels', 'harvestValues' ,// カテゴリ分けしたデータを使用
-            'totalTomatoCount'// もし総収穫数を使うなら、こちらを渡す: 'harvestLabels', 'harvestValues'
+            'weatherLabels',
+            'weatherValues',
+            'harvestLabels',
+            'harvestValues', // カテゴリ分けしたデータを使用
+            'totalTomatoCount' // もし総収穫数を使うなら、こちらを渡す: 'harvestLabels', 'harvestValues'
         ));
     }
 }
