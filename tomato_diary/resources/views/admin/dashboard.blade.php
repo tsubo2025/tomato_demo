@@ -47,6 +47,10 @@
                 <h2>日記の天気別件数</h2>
                 <div class="chart-container">
                     <canvas id="weatherDoughnutChart"></canvas>
+                    {{-- 天気別日記件数の表示要素 --}}
+                    <div class="center-text">
+                        <span class="total-count">{{ $totalWeatherCount ?? 0 }}</span><br>
+                        <span class="total-label">合計件数</span>
                 </div>
             </section>
 

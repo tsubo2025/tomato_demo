@@ -23,6 +23,9 @@ class DashboardController extends Controller
         $weatherLabels = array_keys($weatherCounts);
         $weatherValues = array_values($weatherCounts);
 
+        // ここを追加！
+        $totalWeatherCount = array_sum($weatherValues);
+
         // --- トマトの個数データ集計 ---
         // 例1: トマトの総収穫数（シンプルに合計するだけ）
         $totalTomatoCount = Diary::sum('tomato_count');
@@ -48,6 +51,7 @@ class DashboardController extends Controller
             'weatherValues',
             'harvestLabels',
             'harvestValues', // カテゴリ分けしたデータを使用
+            'totalWeatherCount', // 天気の総件数を渡す場合は、ここで計算して渡す
             'totalTomatoCount' // もし総収穫数を使うなら、こちらを渡す: 'harvestLabels', 'harvestValues'
         ));
     }

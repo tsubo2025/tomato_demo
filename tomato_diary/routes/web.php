@@ -6,7 +6,7 @@ use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
-
+use App\Http\Controllers\AdminAuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,12 +38,14 @@ Route::delete('/diary/{diary}', [DiaryController::class, 'destroy'])->name('diar
 // ダッシュボードのルート
 
 
+
+
 // 管理者用ルート
 Route::prefix('admin')->group(function () {
-    Route::get('login', [AdminController::class, 'showLoginForm'])->name('admin.login');
-    Route::post('login', [AdminController::class, 'login']);
+    Route::get('login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+    Route::post('login', [AdminAuthController::class, 'login']);
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-    Route::post('logout', [AdminController::class, 'logout'])->name('admin.logout');
+    Route::post('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 });
 
 //仕様書ルート
