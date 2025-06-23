@@ -55,6 +55,10 @@
                 <h2>トマト収穫数の分布</h2>
                 <div class="chart-container" style="width: 400px; height: 400px; margin: 0 auto;">
                     <canvas id="harvestDoughnutChart"></canvas>
+                    {{-- トマト個数合計 --}}
+            <div class="center-text">
+            <span class="total-count">{{ $totalTomatoCount ?? 0 }}</span><br>
+            <span class="total-label">合計個数</span>
                 </div>
             </section> 
         </main>

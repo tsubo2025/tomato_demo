@@ -45,8 +45,8 @@ class DashboardController extends Controller
 
         return view('admin.dashboard', compact(
             'weatherLabels', 'weatherValues',
-            'harvestLabels', 'harvestValues' // カテゴリ分けしたデータを使用
-            // もし総収穫数を使うなら、こちらを渡す: 'harvestLabels', 'harvestValues'
+            'harvestLabels', 'harvestValues' ,// カテゴリ分けしたデータを使用
+            'totalTomatoCount'// もし総収穫数を使うなら、こちらを渡す: 'harvestLabels', 'harvestValues'
         ));
     }
 }

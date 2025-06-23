@@ -95,3 +95,31 @@ h2 {
     color: #666;
     font-size: 0.9em;
 } 
+/* public/css/admin/dashboard.css */
+
+.chart-container {
+    /* すでにwidth, height, margin: 0 auto; が設定されているはず */
+    position: relative; /* これを追加または確認 */
+}
+
+.center-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 中央寄せ */
+    text-align: center;
+    color: #333; /* 文字色 */
+    font-family: 'M PLUS Rounded 1c', sans-serif; /* フォントを合わせる */
+    pointer-events: none; /* グラフ操作の邪魔にならないように */
+}
+
+.center-text .total-count {
+    font-size: 2.5em; /* 合計数のフォントサイズ */
+    font-weight: 700; /* 太字 */
+    color: #e74c3c; /* 目立つ色にする */
+}
+
+.center-text .total-label {
+    font-size: 0.9em; /* ラベルのフォントサイズ */
+    color: #666;
+}
