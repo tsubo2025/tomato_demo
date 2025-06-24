@@ -93,7 +93,7 @@
     document.getElementById('statistics-link').addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.getElementById('statistics');
-        const y = target.getBoundingClientRect().top + window.pageYOffset - 80; // 80px上にオフセット
+        const y = target.getBoundingClientRect().top + window.pageYOffset - 80;
         window.scrollTo({ top: y, behavior: 'smooth' });
     });
     </script>
