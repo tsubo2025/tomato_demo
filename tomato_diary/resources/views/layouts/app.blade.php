@@ -14,7 +14,7 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     @vite('resources/css/app.css') {{-- <-- mouse_stalker --}}
 </head>
-<body>
+<body class="{{ \App\Helpers\ThemeHelper::getThemeClass() }}">
     <div class="d-flex flex-column min-vh-100">
         <x-header />
 
