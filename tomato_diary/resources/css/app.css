@@ -3,3 +3,7 @@
 @tailwind utilities;
 
 @import './mouse_stalker.css'; /* Mouse Stalker CSS */
+
+@import "~@fullcalendar/core/main.css";
+@import "~@fullcalendar/daygrid/main.css";
+

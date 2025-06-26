@@ -6,11 +6,7 @@
 
         <h2>PDF仕様書</h2>
         <ul>
-            <li>
-                <a href="{{ route('specifications.showPdf', ['filename' => 'feature-spec']) }}" target="_blank">
-                    機能Aの仕様書 (PDF)
-                </a>
-            </li>
+            
             <li>
                 <a href="{{ asset('pdfs/spec_tomato.pdf') }}" target="_blank" id="tomato-spec-link">
                     トマト観察日記仕様書 (PDF) - 新しいタブで開く
@@ -31,17 +27,17 @@
 
         <hr>
 
-        <h2>機能ごとのスクリーンショット・図</h2>
+        <h2>使用部品</h2>
         <div class="row">
             <div class="col-md-6">
-                <h3>機能A</h3>
-                <p>機能Aのスクリーンショット1:</p>
-                <img src="{{ asset('images/feature-a-screenshot-1.png') }}" alt="機能A スクリーンショット1" style="max-width: 100%; height: auto;">
+                <h3>水周り</h3>
+                <p>:</p>
+                <img src="{{ asset('images/feature-a-screenshot-1.png') }}" alt="水回り部品" style="max-width: 100%; height: auto;">
                 <p>機能Aの概念図:</p>
                 <img src="{{ asset('images/feature-a-diagram.jpg') }}" alt="機能A 概念図" style="max-width: 100%; height: auto;">
             </div>
             <div class="col-md-6">
-                <h3>機能B</h3>
+                <h3>ポンプ・電装部品</h3>
                 <p>機能Bのスクリーンショット:</p>
                 <img src="{{ asset('images/feature-b-screenshot.png') }}" alt="機能B スクリーンショット" style="max-width: 100%; height: auto;">
             </div>

@@ -7,8 +7,9 @@ const harvestLabels = window.harvestLabels;
 const harvestValues = window.harvestValues;
 // totalTomatoCountはHTMLで直接表示するため、ここでの取得は不要ですが、
 // JSプラグインで表示する場合は必要です。
-
+console.log("weather Values:", weatherValues); // デバッグ用
 const totalWeatherCount = weatherValues.reduce((a, b) => a + b, 0);
+
 
 // --- 天気データグラフ ---
 if (weatherLabels && weatherLabels.length > 0 && weatherValues && weatherValues.length > 0) {
