@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
 
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=M+PLUS+Rounded+1c:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap" rel="stylesheet">
 </head>
 
 <body data-sound-path="{{ asset('sound/uguisu.mp3') }}" 
