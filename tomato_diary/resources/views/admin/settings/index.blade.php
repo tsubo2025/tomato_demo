@@ -31,87 +31,90 @@
                         </div>
                     @endif
 
-                    <!-- PDF設定セクション -->
-                    <div class="setting-item">
-                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-4">
-                            <div class="flex">
-                                <div class="flex-shrink-0">
-                                    
-                                </div>
-                                <div class="ml-3"></div>
-                                    <h3 class="text-lg font-medium text-blue-800">PDF仕様書の変更</h3>
-                                    <p class="text-blue-700">現在の仕様書PDFを新しいファイルに変更できます。</p>
+                    <!-- PDF設定セクションと壁紙設定セクションを横並びにするコンテナ -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <!-- PDF設定セクション -->
+                        <div class="setting-item">
+                            <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-4">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        
+                                    </div>
+                                    <div class="ml-3"></div>
+                                        <h3 class="text-lg font-medium text-blue-800">PDF仕様書の変更</h3>
+                                        <p class="text-blue-700">現在の仕様書PDFを新しいファイルに変更できます。</p>
+                                    </div>
                                 </div>
                             </div>
+
+                            <form action="{{ route('admin.settings.pdf') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                                        現在のPDF: {{ $settings['current_pdf'] }}
+                                    </label>
+                                </div>
+                                <div class="file-upload-area" id="pdf-upload-area">
+                                    <input type="file" name="pdf_file" id="pdf_file" accept=".pdf" class="file-input">
+                                    <label for="pdf_file" class="file-label">
+                                        <svg class="w-8 h-8 mx-auto mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                        </svg>
+                                        <span>PDFファイルを選択またはドラッグ&ドロップ</span>
+                                    </label>
+                                    <p class="text-sm text-gray-600 mt-2">対応形式: PDF (最大10MB)</p>
+                                </div>
+                                <div class="preview-area" id="pdf-preview" style="display: none;">
+                                    <h4 class="font-semibold text-gray-800 mb-2">選択されたファイル:</h4>
+                                    <p id="pdf-filename" class="text-sm text-gray-600"></p>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-4">
+                                    PDFを更新
+                                </button>
+                            </form>
                         </div>
 
-                        <form action="{{ route('admin.settings.pdf') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="mb-4">
-                                <label class="block text-gray-700 text-sm font-bold mb-2">
-                                    現在のPDF: {{ $settings['current_pdf'] }}
-                                </label>
+                        <!-- 壁紙設定セクション -->
+                        <div class="setting-item">
+                            <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        
+                                    </div>
+                                    <div class="ml-3">
+                                        <h3 class="text-lg font-medium text-green-800">壁紙の変更</h3>
+                                        <p class="text-green-700">アプリケーションの背景壁紙を変更できます。</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="file-upload-area" id="pdf-upload-area">
-                                <input type="file" name="pdf_file" id="pdf_file" accept=".pdf" class="file-input">
-                                <label for="pdf_file" class="file-label">
-                                    <svg class="w-8 h-8 mx-auto mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                                    </svg>
-                                    <span>PDFファイルを選択またはドラッグ&ドロップ</span>
-                                </label>
-                                <p class="text-sm text-gray-600 mt-2">対応形式: PDF (最大10MB)</p>
-                            </div>
-                            <div class="preview-area" id="pdf-preview" style="display: none;">
-                                <h4 class="font-semibold text-gray-800 mb-2">選択されたファイル:</h4>
-                                <p id="pdf-filename" class="text-sm text-gray-600"></p>
-                            </div>
-                            <button type="submit" class="btn btn-primary mt-4">
-                                PDFを更新
-                            </button>
-                        </form>
-                    </div>
 
-                    <!-- 壁紙設定セクション -->
-                    <div class="setting-item">
-                        <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
-                            <div class="flex">
-                                <div class="flex-shrink-0">
-                                    
+                            <form action="{{ route('admin.settings.wallpaper') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                                        現在の壁紙: {{ $settings['current_wallpaper'] }}
+                                    </label>
                                 </div>
-                                <div class="ml-3">
-                                    <h3 class="text-lg font-medium text-green-800">壁紙の変更</h3>
-                                    <p class="text-green-700">アプリケーションの背景壁紙を変更できます。</p>
+                                <div class="file-upload-area" id="wallpaper-upload-area">
+                                    <input type="file" name="wallpaper_file" id="wallpaper_file" accept=".jpg,.jpeg,.png" class="file-input">
+                                    <label for="wallpaper_file" class="file-label">
+                                        <svg class="w-8 h-8 mx-auto mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                        </svg>
+                                        <span>画像ファイルを選択またはドラッグ&ドロップ</span>
+                                    </label>
+                                    <p class="text-sm text-gray-600 mt-2">対応形式: JPG, JPEG, PNG (最大5MB)</p>
                                 </div>
-                            </div>
+                                <div class="preview-area" id="wallpaper-preview" style="display: none;">
+                                    <h4 class="font-semibold text-gray-800 mb-2">選択されたファイル:</h4>
+                                    <p id="wallpaper-filename" class="text-sm text-gray-600 mb-2"></p>
+                                    <img id="wallpaper-preview-img" class="preview-image" alt="プレビュー">
+                                </div>
+                                <button type="submit" class="btn btn-success mt-4">
+                                    壁紙を更新
+                                </button>
+                            </form>
                         </div>
-
-                        <form action="{{ route('admin.settings.wallpaper') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="mb-4">
-                                <label class="block text-gray-700 text-sm font-bold mb-2">
-                                    現在の壁紙: {{ $settings['current_wallpaper'] }}
-                                </label>
-                            </div>
-                            <div class="file-upload-area" id="wallpaper-upload-area">
-                                <input type="file" name="wallpaper_file" id="wallpaper_file" accept=".jpg,.jpeg,.png" class="file-input">
-                                <label for="wallpaper_file" class="file-label">
-                                    <svg class="w-8 h-8 mx-auto mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                    </svg>
-                                    <span>画像ファイルを選択またはドラッグ&ドロップ</span>
-                                </label>
-                                <p class="text-sm text-gray-600 mt-2">対応形式: JPG, JPEG, PNG (最大5MB)</p>
-                            </div>
-                            <div class="preview-area" id="wallpaper-preview" style="display: none;">
-                                <h4 class="font-semibold text-gray-800 mb-2">選択されたファイル:</h4>
-                                <p id="wallpaper-filename" class="text-sm text-gray-600 mb-2"></p>
-                                <img id="wallpaper-preview-img" class="preview-image" alt="プレビュー">
-                            </div>
-                            <button type="submit" class="btn btn-success mt-4">
-                                壁紙を更新
-                            </button>
-                        </form>
                     </div>
 
                     <!-- 配色設定セクション -->

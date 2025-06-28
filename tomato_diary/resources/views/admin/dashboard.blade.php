@@ -71,7 +71,7 @@
                     <canvas id="weatherDoughnutChart"></canvas>
                     {{-- 天気別日記件数の表示要素 --}}
                     <div class="center-text">
-                        <span class="total-count">{{ $totalWeatherCount ?? 0 }}</span><br>
+                        <span class="total-count">{{ $totalWeatherCount ?? 0 }}</span>
                         <span class="total-label">合計件数</span>
                 </div>
             </section>
@@ -85,7 +85,7 @@
                     <canvas id="harvestDoughnutChart"></canvas>
                     {{-- トマト総収穫個数の表示要素 --}}
                     <div class="center-text">
-                        <span class="total-count">{{ $totalTomatoCount ?? 0 }}</span><br>
+                        <span class="total-count">{{ $totalTomatoCount ?? 0 }}</span>
                         <span class="total-label">合計個数</span>
                     </div>
                 </div>
@@ -143,9 +143,62 @@
         }
                 /* カレンダー用の基本的なスタイル (必要に応じて調整) */
         #calendar {
-            max-width: 900px; /* カレンダーの最大幅 */
-            margin: 0 auto; /* 中央寄せ */
-            font-family: 'M PLUS Rounded 1c', sans-serif; /* 既存のフォントに合わせる */
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            background-color: #fffaf5; /* 柔らかいクリーム色 */
+            border-radius: 15px; /* 角を丸くする */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 影を付ける */
+        }
+
+        /* --- カレンダーヘッダー --- */
+        .fc-header-toolbar {
+            margin-bottom: 1.5em !important; /* !importantで優先度を上げる */
+        }
+
+        .fc-header-toolbar .fc-toolbar-title {
+            font-family: 'Mochiy Pop P One', sans-serif; /* タイトルにポップなフォントを適用 */
+            color: #ff6347; /* トマト色 */
+        }
+
+        /* --- ボタン --- */
+        .fc-button {
+            background-color: #ff7f50 !important; /* コーラル色 */
+            border: none !important;
+            color: white !important;
+            text-transform: capitalize !important;
+            border-radius: 8px !important; /* ボタンの角を丸く */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .fc-button:hover {
+            background-color: #ff6347 !important; /* ホバー時に少し濃い色に */
+        }
+
+        /* --- 今日の日付 --- */
+        .fc-day-today {
+            background-color: #fff0e6 !important; /* 薄いオレンジ */
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+        /* --- イベントのドット --- */
+        .fc-daygrid-event-dot {
+            border-color: #ff6347 !important;
+            border-width: 5px !important; /* ドットを大きくする */
+        }
+
+        /* --- 日付の数字 --- */
+        .fc-daygrid-day-number {
+            color: #5a3e36; /* 落ち着いた茶色 */
+            font-weight: 600;
+        }
+
+        /* --- 曜日ヘッダー --- */
+        .fc-col-header-cell-cushion {
+            color: #ff7f50; /* コーラル色 */
+            font-weight: 700;
         }
     </style>
 </body>

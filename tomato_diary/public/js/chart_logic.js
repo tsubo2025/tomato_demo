@@ -40,6 +40,7 @@ if (weatherLabels && weatherLabels.length > 0 && weatherValues && weatherValues.
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            cutout: '60%', // ドーナツの穴のサイズを大きくする (例: 70%)
             plugins: {
                 title: {
                     display: true,
@@ -99,6 +100,7 @@ if (harvestLabels && harvestLabels.length > 0 && harvestValues && harvestValues.
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            cutout: '60%', // ドーナツの穴のサイズを大きくする (例: 70%)
             plugins: {
                 title: {
                     display: true,
