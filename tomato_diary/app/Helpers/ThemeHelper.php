@@ -68,7 +68,7 @@ class ThemeHelper
             return null; // デフォルト壁紙の場合はnullを返す
         }
 
-        return asset('storage/wallpapers/' . $wallpaper);
+        return asset('image/wallpaper/' . $wallpaper);
     }
 
     /**

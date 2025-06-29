@@ -163,20 +163,7 @@ main {
     width: 100%;
 }
 
-main::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../image/tomato/bg_tomato.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.5;
-    z-index: -1;
-}
+
 
 /* ヘッダーを固定表示 */
 .navbar {

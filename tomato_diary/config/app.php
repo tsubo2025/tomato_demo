@@ -74,6 +74,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Current Wallpaper
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the current wallpaper used in the application.
+    | It is updated dynamically when a new wallpaper is uploaded.
+    |
+    */
+
+    'current_wallpaper' => env('APP_WALLPAPER', 'default.jpg'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Locale Configuration
     |--------------------------------------------------------------------------
     |

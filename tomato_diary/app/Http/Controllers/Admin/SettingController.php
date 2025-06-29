@@ -59,25 +59,59 @@ class SettingController extends Controller
 
     public function updateWallpaper(Request $request)
     {
+        \Illuminate\Support\Facades\Log::info('updateWallpaper method started.');
+
         $request->validate([
             'wallpaper_file' => 'required|file|mimes:jpg,jpeg,png|max:5120', // 5MB制限
         ]);
 
-        $file = $request->file('wallpaper_file');
-        $filename = 'wallpaper.' . $file->getClientOriginalExtension();
+        \Illuminate\Support\Facades\Log::info('Validation passed.');
 
-        // 古いファイルを削除
-        $oldFiles = Storage::disk('public')->files('wallpapers');
-        foreach ($oldFiles as $oldFile) {
-            if (str_contains($oldFile, 'wallpaper.')) {
-                Storage::disk('public')->delete($oldFile);
+        if ($request->hasFile('wallpaper_file')) {
+            $file = $request->file('wallpaper_file');
+            $filename = 'wallpaper.' . $file->getClientOriginalExtension();
+
+            \Illuminate\Support\Facades\Log::info('File received: ' . $file->getClientOriginalName() . ' (Size: ' . $file->getSize() . ' bytes)');
+
+            // 古いファイルを削除
+            $oldFiles = File::files(public_path('image/wallpaper'));
+            \Illuminate\Support\Facades\Log::info('Checking for old wallpaper files. Found: ' . implode(', ', array_map(function($f){return basename($f);}, $oldFiles)));
+            foreach ($oldFiles as $oldFile) {
+                if (str_contains(basename($oldFile), 'wallpaper.')) {
+                    File::delete($oldFile);
+                    \Illuminate\Support\Facades\Log::info('Deleted old wallpaper file: ' . basename($oldFile));
+                }
             }
+
+            // 新しいファイルを保存
+            $file->move(public_path('image/wallpaper'), $filename);
+            $path = 'image/wallpaper/' . $filename;
+            \Illuminate\Support\Facades\Log::info('New wallpaper file stored at: ' . $path);
+
+            // .env ファイルの APP_WALLPAPER を更新
+            $envPath = base_path('.env');
+            $envContent = file_get_contents($envPath);
+            $newEnvContent = preg_replace(
+                '/^APP_WALLPAPER=.*$/m',
+                'APP_WALLPAPER=' . $filename,
+                $envContent
+            );
+            file_put_contents($envPath, $newEnvContent);
+
+            // config キャッシュをクリア（必要であれば）
+            \Illuminate\Support\Facades\Artisan::call('config:clear');
+
+            // 現在のリクエストのconfig値を更新
+            config(['app.current_wallpaper' => $filename]);
+
+            // 現在のリクエストのconfig値を更新
+            config(['app.current_wallpaper' => $filename]);
+
+            return redirect()->route('admin.settings.index')->with('success', '壁紙を更新しました。');
+        } else {
+            \Illuminate\Support\Facades\Log::warning('No wallpaper file found in request.');
+            return redirect()->route('admin.settings.index')->with('error', '壁紙ファイルが選択されていません。');
         }
-
-        // 新しいファイルを保存
-        $file->storeAs('wallpapers', $filename, 'public');
-
-        return redirect()->route('admin.settings.index')->with('success', '壁紙を更新しました。');
     }
 
     public function updateTheme(Request $request)

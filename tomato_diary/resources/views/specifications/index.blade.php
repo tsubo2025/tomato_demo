@@ -8,7 +8,7 @@
         <ul>
             
             <li>
-                <a href="{{ asset('pdfs/spec_tomato.pdf') }}" target="_blank" id="tomato-spec-link">
+                <a href="{{ Storage::url('pdfs/spec_tomato.pdf') }}" target="_blank" id="tomato-spec-link">
                     トマト観察日記仕様書 (PDF) - 新しいタブで開く
                 </a>
             </li>
@@ -18,7 +18,7 @@
 
         <h2>トマト観察日記仕様書</h2>
         <div class="pdf-container mb-4">
-            <iframe src="{{ asset('pdfs/spec_tomato.pdf') }}" 
+            <iframe src="{{ Storage::url('pdfs/spec_tomato.pdf') }}" 
                     width="100%" 
                     height="800px" 
                     style="border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">

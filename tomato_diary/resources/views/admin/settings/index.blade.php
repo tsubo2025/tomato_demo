@@ -35,7 +35,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <!-- PDF設定セクション -->
                         <div class="setting-item">
-                            <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-4">
+                            <div class="bg-blue-50 border-l-8 border-blue-400 p-4 mb-4">
                                 <div class="flex">
                                     <div class="flex-shrink-0">
                                         
@@ -71,12 +71,15 @@
                                 <button type="submit" class="btn btn-primary mt-4">
                                     PDFを更新
                                 </button>
+                                <button type="button" id="previewPdfButton" class="btn btn-info mt-4 ml-2">
+                                    PDFプレビュー
+                                </button>
                             </form>
                         </div>
 
                         <!-- 壁紙設定セクション -->
                         <div class="setting-item">
-                            <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
+                            <div class="bg-green-50 border-l-8 border-green-400 p-4 mb-4">
                                 <div class="flex">
                                     <div class="flex-shrink-0">
                                         
@@ -119,7 +122,7 @@
 
                     <!-- 配色設定セクション -->
                     <div class="setting-item">
-                        <div class="bg-purple-50 border-l-4 border-purple-400 p-4 mb-4">
+                        <div class="bg-purple-50 border-l-8 border-purple-400 p-4 mb-4">
                             <div class="flex">
                                 <div class="flex-shrink-0">
                                     
@@ -156,6 +159,14 @@
                         </form>
                     </div>
 
+                    <!-- PDFプレビューコンテナ -->
+                    <div class="setting-item mt-6" id="pdf-preview-container" style="display: none;">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">PDFプレビュー</h3>
+                        <div class="pdf-container mb-4">
+                            <iframe id="pdf-preview-iframe" width="100%" height="800px" style="border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></iframe>
+                        </div>
+                    </div>
+
                     <!-- プレビューセクション -->
                     <div class="setting-item">
                         <h3 class="text-lg font-medium text-gray-900 mb-4">設定プレビュー</h3>
@@ -172,7 +183,7 @@
                                 <h4 class="font-semibold text-gray-800 mb-2">壁紙</h4>
                                 <p class="text-sm text-gray-600">{{ $settings['current_wallpaper'] }}</p>
                                 @if($settings['current_wallpaper'] !== 'default.jpg')
-                                    <img src="{{ asset('storage/wallpapers/' . $settings['current_wallpaper']) }}" 
+                                    <img src="{{ asset('image/wallpaper/' . $settings['current_wallpaper']) }}" 
                                          alt="現在の壁紙" class="preview-image">
                                 @else
                                     <div class="preview-image bg-gray-200 flex items-center justify-center">
@@ -273,5 +284,15 @@
 
     setupDragAndDrop('pdf-upload-area', 'pdf_file');
     setupDragAndDrop('wallpaper-upload-area', 'wallpaper_file');
+
+    // PDFプレビュー機能
+    document.getElementById('previewPdfButton').addEventListener('click', function() {
+        const pdfPreviewContainer = document.getElementById('pdf-preview-container');
+        const pdfPreviewIframe = document.getElementById('pdf-preview-iframe');
+        const pdfUrl = "{{ Storage::url('pdfs/spec_tomato.pdf') }}";
+
+        pdfPreviewIframe.src = pdfUrl;
+        pdfPreviewContainer.style.display = 'block';
+    });
 </script>
-@endsection 
+@endsection

@@ -19,7 +19,7 @@
                     @foreach($diaries as $diary)
                         <div class="card mb-1 shadow-sm">
                             <div class="card-body p-1">
-                                <h5 class="card-title mb-1" style="font-size: 1.5rem;">{{ $diary->date ? \Carbon\Carbon::parse($diary->date)->format('Y年m月d日') : '日付なし' }}</h5>
+                                <h5 class="card-title mb-1" id="date-{{ \Carbon\Carbon::parse($diary->date)->format('Y-m-d') }}" style="font-size: 1.5rem;">{{ $diary->date ? \Carbon\Carbon::parse($diary->date)->format('Y年m月d日') : '日付なし' }}</h5>
                                 <div class="d-flex flex-row">
                                     <div class="flex-grow-1 pe-3">
                                         <p class="card-text mb-1" style="font-size: 1.2rem;">
@@ -152,6 +152,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // URLのハッシュに基づいてスクロール
+    if (window.location.hash) {
+        const targetId = window.location.hash.substring(1); // '#' を除去
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            // スムーズスクロール
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // URLからハッシュを削除（任意）
+            // history.replaceState(null, null, ' ');
+        }
+    }
 });
 </script>
 @endpush

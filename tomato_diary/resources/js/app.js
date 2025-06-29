@@ -53,9 +53,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 日記がある日は、diary/index ページにスクロールする
                 info.jsEvent.preventDefault(); 
 
-                // `window.diaryIndexBaseUrl` が適切に定義されていることを前提とします。
-                const eventDate = info.event.start.toISOString().substring(0, 10);
-                window.location.href = `${window.diaryIndexBaseUrl}?date=${eventDate}`;
+                const dateObj = info.event.start;
+                const year = dateObj.getFullYear();
+                const month = (dateObj.getMonth() + 1).toString().padStart(2, '0'); // 月は0から始まるため+1
+                const day = dateObj.getDate().toString().padStart(2, '0');
+                const eventDate = `${year}-${month}-${day}`; // YYYY-MM-DD 形式
+                // diary.index ページに遷移し、ハッシュとして日付を渡す
+                window.location.href = `/top#date-${eventDate}`;
             },
             dateClick: function(info) {
                 alert('この日は、日記がありません。: ' + info.dateStr);

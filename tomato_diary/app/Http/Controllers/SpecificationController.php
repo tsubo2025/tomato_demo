@@ -28,7 +28,7 @@ class SpecificationController extends Controller // ここを SpecificationContr
      */
     public function showPdf($filename) // メソッド名を showPdf など、より具体的な名前にすることも検討
     {
-        $filePath = public_path('pdfs/' . $filename . '.pdf');
+        $filePath = storage_path('app/public/pdfs/' . $filename . '.pdf');
 
         if (!file_exists($filePath)) {
             abort(404, '指定されたPDFファイルが見つかりません。');
