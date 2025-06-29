@@ -8,8 +8,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+                    <div class="flex items-center justify-center mb-6">
+                        <h2 class="text-3xl font-bold text-gray-900 text-center" style="font-family: 'Comic Sans MS', cursive, sans-serif; color: #8b5cf6; text-shadow: 2px 2px 4px rgba(139, 92, 246, 0.3);">
+                            🌟 システム設定 🌟
+                        </h2>
+                    </div>
+
                     <div class="flex items-center justify-between mb-6">
-                        <h2 class="text-2xl font-bold text-gray-900">システム設定</h2>
                         <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary">
                             ダッシュボードに戻る
                         </a>
@@ -40,7 +45,7 @@
                                     <div class="flex-shrink-0">
                                         
                                     </div>
-                                    <div class="ml-3"></div>
+                                    <div class="ml-3">
                                         <h3 class="text-lg font-medium text-blue-800">PDF仕様書の変更</h3>
                                         <p class="text-blue-700">現在の仕様書PDFを新しいファイルに変更できます。</p>
                                     </div>
@@ -78,7 +83,7 @@
                         </div>
 
                         <!-- 壁紙設定セクション -->
-                        <div class="setting-item">
+                        <div class="setting-item border-2 border-green-500 rounded-lg shadow-lg p-4">
                             <div class="bg-green-50 border-l-8 border-green-400 p-4 mb-4">
                                 <div class="flex">
                                     <div class="flex-shrink-0">
@@ -91,32 +96,52 @@
                                 </div>
                             </div>
 
-                            <form action="{{ route('admin.settings.wallpaper') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="mb-4">
-                                    <label class="block text-gray-700 text-sm font-bold mb-2">
-                                        現在の壁紙: {{ $settings['current_wallpaper'] }}
-                                    </label>
+                            <!-- 壁紙設定とプレビューを横並びにするコンテナ -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- 左側：壁紙設定フォーム -->
+                                <div>
+                                    <form action="{{ route('admin.settings.wallpaper') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="mb-4">
+                                            <label class="block text-gray-700 text-sm font-bold mb-2">
+                                                現在の壁紙: {{ $settings['current_wallpaper'] }}
+                                            </label>
+                                        </div>
+                                        <div class="file-upload-area" id="wallpaper-upload-area">
+                                            <input type="file" name="wallpaper_file" id="wallpaper_file" accept=".jpg,.jpeg,.png" class="file-input">
+                                            <label for="wallpaper_file" class="file-label">
+                                                <svg class="w-8 h-8 mx-auto mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                                </svg>
+                                                <span>画像ファイルを選択またはドラッグ&ドロップ</span>
+                                            </label>
+                                            <p class="text-sm text-gray-600 mt-2">対応形式: JPG, JPEG, PNG (最大5MB)</p>
+                                        </div>
+                                        <div class="preview-area" id="wallpaper-preview" style="display: none;">
+                                            <h4 class="font-semibold text-gray-800 mb-2">選択されたファイル:</h4>
+                                            <p id="wallpaper-filename" class="text-sm text-gray-600 mb-2"></p>
+                                            <img id="wallpaper-preview-img" class="preview-image" alt="プレビュー">
+                                        </div>
+                                        <button type="submit" class="btn btn-success mt-4">
+                                            壁紙を更新
+                                        </button>
+                                    </form>
                                 </div>
-                                <div class="file-upload-area" id="wallpaper-upload-area">
-                                    <input type="file" name="wallpaper_file" id="wallpaper_file" accept=".jpg,.jpeg,.png" class="file-input">
-                                    <label for="wallpaper_file" class="file-label">
-                                        <svg class="w-8 h-8 mx-auto mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                        </svg>
-                                        <span>画像ファイルを選択またはドラッグ&ドロップ</span>
-                                    </label>
-                                    <p class="text-sm text-gray-600 mt-2">対応形式: JPG, JPEG, PNG (最大5MB)</p>
+
+                                <!-- 右側：壁紙プレビューカード -->
+                                <div class="preview-card">
+                                    <h4 class="font-semibold text-gray-800 mb-2">現在の壁紙</h4>
+                                    <p class="text-sm text-gray-600 mb-3">{{ $settings['current_wallpaper'] }}</p>
+                                    @if($settings['current_wallpaper'] !== 'default.jpg')
+                                        <img src="{{ asset('image/wallpaper/' . $settings['current_wallpaper']) }}" 
+                                             alt="現在の壁紙" class="preview-image w-full h-48 object-cover rounded-lg shadow-md">
+                                    @else
+                                        <div class="preview-image bg-gray-200 flex items-center justify-center w-full h-48 rounded-lg shadow-md">
+                                            <span class="text-gray-500 text-sm">デフォルト壁紙</span>
+                                        </div>
+                                    @endif
                                 </div>
-                                <div class="preview-area" id="wallpaper-preview" style="display: none;">
-                                    <h4 class="font-semibold text-gray-800 mb-2">選択されたファイル:</h4>
-                                    <p id="wallpaper-filename" class="text-sm text-gray-600 mb-2"></p>
-                                    <img id="wallpaper-preview-img" class="preview-image" alt="プレビュー">
-                                </div>
-                                <button type="submit" class="btn btn-success mt-4">
-                                    壁紙を更新
-                                </button>
-                            </form>
+                            </div>
                         </div>
                     </div>
 
@@ -178,18 +203,6 @@
                                    class="text-blue-600 hover:text-blue-800 text-sm" target="_blank">
                                     プレビューを見る
                                 </a>
-                            </div>
-                            <div class="preview-card">
-                                <h4 class="font-semibold text-gray-800 mb-2">壁紙</h4>
-                                <p class="text-sm text-gray-600">{{ $settings['current_wallpaper'] }}</p>
-                                @if($settings['current_wallpaper'] !== 'default.jpg')
-                                    <img src="{{ asset('image/wallpaper/' . $settings['current_wallpaper']) }}" 
-                                         alt="現在の壁紙" class="preview-image">
-                                @else
-                                    <div class="preview-image bg-gray-200 flex items-center justify-center">
-                                        <span class="text-gray-500 text-sm">デフォルト壁紙</span>
-                                    </div>
-                                @endif
                             </div>
                             <div class="preview-card">
                                 <h4 class="font-semibold text-gray-800 mb-2">テーマ</h4>
