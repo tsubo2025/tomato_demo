@@ -54,11 +54,11 @@
                     </a>
                     <a href="#statistics" class="menu-item" id="statistics-link">
                         <h3>統計情報</h3>
-                        <p>利用状況の統計グラフ</p>
+                        <p>利用状況の統計グラフ/カレンダー</p>
                     </a>
                     <a href="{{ route('admin.settings.index') }}" class="menu-item">
-                        <h3>設定</h3>
-                        <p>システム設定</p>
+                        <h3>各種設定</h3>
+                        <p>PDF仕様書変更/壁紙変更/配色テーマ変更</p>
                     </a>
                 </div>
             </section>
