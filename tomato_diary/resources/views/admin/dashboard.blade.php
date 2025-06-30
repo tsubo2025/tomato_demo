@@ -114,6 +114,44 @@
         const y = target.getBoundingClientRect().top + window.pageYOffset - 80;
         window.scrollTo({ top: y, behavior: 'smooth' });
     });
+
+    // カレンダーのイベントがある日付にポインターカーソルを適用
+    document.addEventListener('DOMContentLoaded', function() {
+        // FullCalendarが完全に読み込まれた後に実行
+        setTimeout(function() {
+            const eventDots = document.querySelectorAll('.fc-daygrid-event-dot');
+            eventDots.forEach(function(dot) {
+                // イベントドットの親要素（日付セル）を取得
+                const dayCell = dot.closest('.fc-daygrid-day');
+                if (dayCell) {
+                    dayCell.style.cursor = 'pointer';
+                }
+            });
+        }, 1000); // 1秒後に実行してFullCalendarの読み込みを待つ
+
+        // MutationObserverを使用して動的に追加されるイベントにも対応
+        const calendarContainer = document.getElementById('calendar');
+        if (calendarContainer) {
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        const eventDots = document.querySelectorAll('.fc-daygrid-event-dot');
+                        eventDots.forEach(function(dot) {
+                            const dayCell = dot.closest('.fc-daygrid-day');
+                            if (dayCell) {
+                                dayCell.style.cursor = 'pointer';
+                            }
+                        });
+                    }
+                });
+            });
+
+            observer.observe(calendarContainer, {
+                childList: true,
+                subtree: true
+            });
+        }
+    });
     </script>
 
     <style>
@@ -199,6 +237,37 @@
         .fc-col-header-cell-cushion {
             color: #ff7f50; /* コーラル色 */
             font-weight: 700;
+        }
+
+        /* --- イベントがある日付のカーソルをポインターに --- */
+        .fc-daygrid-day.fc-day-has-events {
+            cursor: pointer;
+        }
+
+        /* --- イベントがある日付のホバー効果 --- */
+        .fc-daygrid-day.fc-day-has-events:hover {
+            background-color: #fff5f0 !important; /* 薄いオレンジ色 */
+            transition: background-color 0.2s ease;
+        }
+
+        /* --- より確実なセレクターでイベントがある日付のカーソルをポインターに --- */
+        .fc-daygrid-day.fc-day-has-events,
+        .fc-daygrid-day:has(.fc-daygrid-event-dot),
+        .fc-daygrid-day:has(.fc-daygrid-event) {
+            cursor: pointer !important;
+        }
+
+        /* --- イベントがある日付のホバー効果（より確実なセレクター） --- */
+        .fc-daygrid-day.fc-day-has-events:hover,
+        .fc-daygrid-day:has(.fc-daygrid-event-dot):hover,
+        .fc-daygrid-day:has(.fc-daygrid-event):hover {
+            background-color: #fff5f0 !important; /* 薄いオレンジ色 */
+            transition: background-color 0.2s ease;
+        }
+
+        /* --- イベントドット自体にもポインターカーソルを適用 --- */
+        .fc-daygrid-event-dot {
+            cursor: pointer !important;
         }
     </style>
 </body>
