@@ -1,1 +1,12 @@
-TODO 
+/* resources/css/mouse_stalker.css */
+
+.mouse-stalker {
+    position: fixed; /* 画面に固定表示 */
+    font-size: 40px; /* トマトの絵文字のサイズ */
+    pointer-events: none; /* マウスイベントを透過させ、下の要素をクリック可能にする */
+    z-index: 9999; /* 他の要素より手前に表示 */
+    /* マウスのX/Y座標はtransformで直接指定するため、left/topは初期値を設定しない */
+    /* アニメーションを滑らかにするためのtransition */
+    transition: transform 0.05s ease-out, opacity 0.3s ease-out;
+    opacity: 1; /* 初期表示は透明ではない */
+}

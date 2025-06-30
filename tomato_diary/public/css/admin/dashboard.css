@@ -95,3 +95,40 @@ h2 {
     color: #666;
     font-size: 0.9em;
 } 
+/* public/css/admin/dashboard.css */
+
+.chart-container {
+    /* すでにwidth, height, margin: 0 auto; が設定されているはず */
+    position: relative; /* これを追加または確認 */
+}
+
+.center-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10%; /* 少し下にずらす */
+    pointer-events: none; /* クリックイベントを下のcanvasに透過させる */
+}
+
+.center-text .total-count {
+    font-size: 3.5em;   /* お好みで調整（例: 2.5em～4em） */
+    font-weight: 700;
+    color: #e74c3c;
+    line-height: 1.1;
+    margin: 0;
+    padding: 0;
+}
+
+.center-text .total-label {
+    font-size: 1.3em;   /* お好みで調整（例: 0.9em～1.5em） */
+    color: #666;
+    line-height: 1.1;
+    margin: 0;
+    padding: 0;
+}

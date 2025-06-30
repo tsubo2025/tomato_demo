@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Admin;
 
 class AdminAuthController extends Controller
 {
@@ -15,12 +16,15 @@ class AdminAuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('username', 'password');
+
+        // 認証処理
         if (Auth::guard('admin')->attempt($credentials)) {
-            // ログイン成功
             return redirect()->intended('/admin/dashboard');
         }
-        // ログイン失敗
-        return back()->withErrors(['login' => 'IDまたはパスワードが違います']);
+
+        return back()->withInput()->withErrors([
+            'login' => 'ユーザーネームまたはパスワードが正しくありません。',
+        ]);
     }
 
     public function logout()

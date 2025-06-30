@@ -18,14 +18,17 @@
         <form method="POST" action="{{ route('admin.login') }}" class="login-form">
             @csrf
             <div class="form-group">
-                <label for="username">ユーザーID</label>
-                <input type="text" id="username" name="username" required>
+                <label for="username">管理者ID</label>
+                <input type="text" id="username" name="username" required autofocus>
             </div>
             <div class="form-group">
                 <label for="password">パスワード</label>
                 <input type="password" id="password" name="password" required>
             </div>
             <button type="submit" class="login-button">ログイン</button>
+            @if ($errors->has('login'))
+                <div style="color:red;">{{ $errors->first('login') }}</div>
+            @endif
         </form>
         <a href="{{ route('welcome') }}" class="back-button">トップページに戻る</a>
     </div>
