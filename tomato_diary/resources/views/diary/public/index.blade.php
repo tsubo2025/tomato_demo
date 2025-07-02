@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1 class="mb-4">トマト観察日記</h1>
+    <h1 class="mb-4">トマト栽培日記</h1>
 
     @if(session('success'))
         <div class="alert alert-success">

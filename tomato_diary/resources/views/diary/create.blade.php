@@ -79,7 +79,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="tomato_count" class="form-label">トマトの数</label>
+                            <label for="tomato_count" class="form-label">収穫したトマトの数</label>
                             <input type="number" 
                                    class="form-control @error('tomato_count') is-invalid @enderror" 
                                    id="tomato_count" 

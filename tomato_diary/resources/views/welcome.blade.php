@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>トマト観察日記</title>
+    <title>トマト栽培日記</title>
 
     <!-- CSSファイル -->
     <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
@@ -19,15 +19,15 @@
       data-bounce-sound-path="{{ asset('sound/bounce.mp3') }}"
       data-tomato-image-path="{{ asset('image/tomato/tomato_red.png') }}"
       data-canned-tomato-image-path="{{ asset('image/tomato/kandume_tomato.png') }}">
-    <h1 class="title" id="animated-title">トマト観察日記</h1>
+    <h1 class="title" id="animated-title">トマト栽培日記</h1>
 
     <div id="animation-container">
     </div>
 
     <div id="main-content">
-        <h2>ようこそ、トマト観察日記へ！</h2>
+        <h2>ようこそ、トマト栽培日記へ！</h2>
         <p>ここでは、日々のトマトたちを観察しています。たまに、缶詰になったトマトも落ちてきますね。彼らがどのように育ち、そしてどうなるのか、静かに見守りましょう。</p>
-        <p>このページは、背景のトマトアニメーションを透かして表示しています。</p>
+        <p></p>
 
         <button id="next-page-button" class="action-button">トマトを見に行く</button>
     </div>

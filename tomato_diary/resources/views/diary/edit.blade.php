@@ -84,7 +84,7 @@
                         @endif
 
                         <div class="mb-3">
-                            <label for="tomato_count" class="form-label">トマトの数 <span class="text-danger">*</span></label>
+                            <label for="tomato_count" class="form-label">収穫したトマトの数 <span class="text-danger">*</span></label>
                             <input type="number" class="form-control @error('tomato_count') is-invalid @enderror" 
                                    id="tomato_count" name="tomato_count" 
                                    value="{{ old('tomato_count', $diary->tomato_count ?? 0) }}" 

@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card shadow-sm">
                 <div class="card-header bg-white py-2">
-                    <h4 class="mb-0">トマト日記一覧</h4>
+                    <h4 class="mb-0">トマト日記一覧管理者ページ</h4>
                 </div>
 
                 <div class="card-body p-1">
@@ -50,8 +50,8 @@
                                 </div>
 
                                 <div class="mt-1">
-                                    <a href="{{ route('diary.edit', $diary->id) }}" class="btn btn-primary btn-sm py-0 px-1" style="font-size: 1rem;">
-                                        <i class="fas fa-edit"></i> 編集
+                                    <a href="{{ route('diary.edit', $diary->id) }}" class="btn btn-primary btn-sm py-1 px-1" style="font-size: 1rem;">
+                                        <i class="fas fa-edit"></i> 編集する
                                     </a>
                                 </div>
                             </div>

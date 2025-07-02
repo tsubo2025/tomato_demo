@@ -15,13 +15,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('diary.index') ? 'active' : '' }}" href="{{ route('diary.index') }}">
-                        <i class="fas fa-plus"></i> 一覧
+                    <a class="nav-link {{ request()->routeIs('welcome') ? 'active' : '' }}" href="{{ route('welcome') }}">
+                        <i class="fas fa-plus"></i> TOPページ
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('diary.index') ? 'active' : '' }}" href="{{ route('diary.index') }}">
-                        <i class="fas fa-list"></i> 一覧カレンダー
+                    <a class="nav-link {{ request()->routeIs('diary.public.index') ? 'active' : '' }}" href="{{ route('diary.public.index') }}">
+                        <i class="fas fa-list"></i> 日記一覧
                     </a>
                 </li>
                 
