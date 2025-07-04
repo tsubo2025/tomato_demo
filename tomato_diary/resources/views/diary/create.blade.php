@@ -5,8 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex align-items-center justify-content-between">
                     <h4 class="mb-0">新規作成</h4>
+                    <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary btn-sm ms-2">
+                        <i class="fas fa-arrow-left"></i> ダッシュボードへ戻る
+                    </a>
                 </div>
 
                 <div class="card-body">
@@ -127,6 +130,9 @@
     }
     .invalid-feedback {
         font-size: 0.875rem;
+    }
+    .card-header h4 {
+        font-family: 'Rounded Mplus 1c', 'Noto Sans JP', 'Hiragino Maru Gothic ProN', 'Yu Gothic Rounded', 'sans-serif';
     }
 </style>
 @endpush

@@ -109,6 +109,10 @@
 .modal-backdrop {
     display: none !important;
 }
+.card-title {
+    font-family: 'Rounded Mplus 1c', 'Noto Sans JP', 'Hiragino Maru Gothic ProN', 'Yu Gothic Rounded', 'sans-serif';
+    color: #388e3c;
+}
 </style>
 
 @push('scripts')

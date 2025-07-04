@@ -5,8 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex align-items-center justify-content-between">
                     <h4 class="mb-0">日記を編集</h4>
+                    <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary btn-sm ms-2">
+                        <i class="fas fa-arrow-left"></i> ダッシュボードへ戻る
+                    </a>
                 </div>
 
                 <div class="card-body">
@@ -113,6 +116,13 @@
 <style>
     .invalid-feedback {
         display: block;
+    }
+    .card {
+        background-color: #e8f5e9;
+    }
+    .card-header h4 {
+        font-family: 'Rounded Mplus 1c', 'Noto Sans JP', 'Hiragino Maru Gothic ProN', 'Yu Gothic Rounded', 'sans-serif';
+        color: #388e3c;
     }
 </style>
 @endpush
