@@ -5,8 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow-sm">
-                <div class="card-header bg-white py-2">
+                <div class="card-header bg-white py-2 d-flex align-items-center justify-content-between">
                     <h4 class="mb-0">トマト日記一覧管理者ページ</h4>
+                    <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary btn-sm ms-2">
+                        <i class="fas fa-arrow-left"></i> ダッシュボードへ戻る
+                    </a>
                 </div>
 
                 <div class="card-body p-1">
