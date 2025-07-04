@@ -23,10 +23,13 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+h1, h2, h3, .menu-item h3 {
+    font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', 'Hiragino Maru Gothic ProN', 'Yu Gothic', sans-serif !important;
+}
+
 h1 {
     color: #FF5722;
     margin: 0;
-    font-family: 'Mochiy Pop P One', cursive;
     font-size: 2em;
 }
 
@@ -58,7 +61,6 @@ h2 {
     color: #FF5722;
     margin-top: 0;
     margin-bottom: 30px;
-    font-family: 'Mochiy Pop P One', cursive;
     font-size: 1.8em;
 }
 
@@ -87,7 +89,6 @@ h2 {
     color: #FF5722;
     margin-top: 0;
     margin-bottom: 10px;
-    font-family: 'Mochiy Pop P One', cursive;
 }
 
 .menu-item p {
